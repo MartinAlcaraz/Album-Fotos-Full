@@ -7,10 +7,10 @@ const userSchema= new Schema({
         required: true,
         unique: true
     },
-    img: {
-        type: String,
-        data: Buffer
+    imageUrl: {
+        type: String
     },
+    public_id: String,
     active: {
         type: Boolean,
         default: false
