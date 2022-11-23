@@ -72,7 +72,7 @@ usersCtrl.postUser = async (req, res) => {
 
             const newUser = new User({
                 userName,
-                imageUrl: cloudResult.url,
+                imageUrl: cloudResult.secure_url,
                 public_id: cloudResult.public_id
             })
             const saved = await newUser.save();
