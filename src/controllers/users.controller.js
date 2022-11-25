@@ -93,9 +93,12 @@ usersCtrl.postUser = async (req, res) => {
 
 usersCtrl.deleteUser = async (req, res) => {
     try {
-        const result = await User.findByIdAndDelete(req.params.id);
 
+        console.log('req ',req.params);
+        const result = await User.findByIdAndDelete(req.params.id);
+        console.log('res ', result);
         cloudinary.uploader.destroy(result.public_id); // pulblic_id es el id de la img de cloudinary
+        console.log('cloudinary');
 
         if (result) {
             res.json({ message: "User deleted", ok: true })
