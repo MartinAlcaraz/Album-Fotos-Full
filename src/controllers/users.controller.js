@@ -68,7 +68,7 @@ usersCtrl.postUser = async (req, res) => {
                 }
             );
             // se borra la imagen guardada en public/uploads/ --> (req.file)
-            //fs.unlinkSync(image.path);
+            fs.unlinkSync(image.path);
 
             const newUser = new User({
                 userName,
@@ -83,11 +83,9 @@ usersCtrl.postUser = async (req, res) => {
                 res.json({ message: "User Not Saved.", saved: false })
             }
         } else {
-            fs.unlinkSync(image.path); // se borra la imagen del servidor
             res.json({ message: "userName and image are required.", saved: false })
         }
     } catch (err) {
-        fs.unlinkSync(image.path); // se borra la imagen del servidor
         res.json({ message: "Error, could not save the user.", saved: false })
         console.log('Error. Could not save')
     }
