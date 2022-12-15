@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const URI = process.env.MONGODB_URI || "mongodb://localhost/Album01";
+// const URI = "mongodb://localhost/Album01";
 
 mongoose.connect(URI, {
     useNewUrlParser: true,
@@ -18,5 +19,6 @@ db.once("open", _ => {
 
 // to test the error stop mongod
 db.on("error", err => {
-    console.log('Ocurrio un error... \n', err);
+    console.log('Ocurrio un error al conectarse a la base de datos... \n', err);
 });
+

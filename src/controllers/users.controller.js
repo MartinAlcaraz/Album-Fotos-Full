@@ -67,8 +67,13 @@ usersCtrl.postUser = async (req, res) => {
                     upload_preset: "user_profile_photo"
                 }
             );
+
             // se borra la imagen guardada en public/uploads/ --> (req.file)
-            //fs.unlinkSync(image.path);
+            try {
+                fs.unlinkSync(image.path);
+            } catch {
+                console.log('no se pudo borrar la imagen de /uploads')
+            }
 
             const newUser = new User({
                 userName,
